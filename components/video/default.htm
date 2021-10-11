@@ -1,0 +1,46 @@
+{% if __SELF__.metaDisabled %}
+    <div class="media-container">
+        <div class="thumbnail-container" onclick="
+            (function (container) {
+                var video = container.parentElement.querySelector('video');
+                video.src = video.getAttribute('data-src');
+                video.style.display = 'block';
+                container.remove();
+            })(this)
+        ">
+            <div class="video-overlay">
+                <svg aria-hidden="true" focusable="false" data-icon="play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><g class="fa-group"><path fill="rgba(173, 181, 189, 0.4)" d="M424.41 214.66L72.41 6.55C43.81-10.34 0 6.05 0 47.87V464c0 37.5 40.69 60.09 72.41 41.3l352-208c31.4-18.54 31.5-64.14 0-82.64zM321.89 283.5L112.28 407.35C91 420 64 404.58 64 379.8V132c0-24.78 27-40.16 48.28-27.54l209.61 123.95a32 32 0 0 1 0 55.09z"></path><path fill="rgb(173, 181, 189)" d="M112.28 104.48l209.61 123.93a32 32 0 0 1 0 55.09L112.28 407.35C91 420 64 404.58 64 379.8V132c0-24.76 27-40.14 48.28-27.52z"></path></g></svg>
+            </div>
+            <img class="thumbnail{{ __SELF__.lazy ? " lazy" : "" }}" alt="{{ __SELF__.meta('thumbnail_alt') }}" {{ __SELF__.lazy ? "data-" : "" }}src="{{ __SELF__.thumbnail }}">
+        </div>
+        <div class="video-container">
+            <video controls preload="auto" autoplay data-src="{{ __SELF__.url }}" width="100%" style="display: none"></video>
+        </div>
+    </div>
+{% else %}
+    <div itemscope="" itemtype="http://schema.org/VideoObject">
+        <meta itemprop="name" content="{{ __SELF__.meta('name') }}">
+        <meta itemprop="description" content="{{ __SELF__.meta('description') }}">
+        <meta itemprop="thumbnailURL" content="{{ __SELF__.thumbnail }}">
+        <meta itemprop="uploadDate" content="{{ __SELF__.meta('uploaded_date') }}">
+        <meta itemprop="embedURL" content="{{ __SELF__.url }}">
+        <div class="media-container">
+            <div class="thumbnail-container" onclick="
+                (function (container) {
+                    var video = container.parentElement.querySelector('video');
+                    video.src = video.getAttribute('data-src');
+                    video.style.display = 'block';
+                    container.remove();
+                })(this)
+            ">
+                <div class="video-overlay">
+                    <svg aria-hidden="true" focusable="false" data-icon="play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><g class="fa-group"><path fill="rgba(173, 181, 189, 0.4)" d="M424.41 214.66L72.41 6.55C43.81-10.34 0 6.05 0 47.87V464c0 37.5 40.69 60.09 72.41 41.3l352-208c31.4-18.54 31.5-64.14 0-82.64zM321.89 283.5L112.28 407.35C91 420 64 404.58 64 379.8V132c0-24.78 27-40.16 48.28-27.54l209.61 123.95a32 32 0 0 1 0 55.09z"></path><path fill="rgb(173, 181, 189)" d="M112.28 104.48l209.61 123.93a32 32 0 0 1 0 55.09L112.28 407.35C91 420 64 404.58 64 379.8V132c0-24.76 27-40.14 48.28-27.52z"></path></g></svg>
+                </div>
+                <img class="thumbnail{{ __SELF__.lazy ? " lazy" : "" }}" alt="{{ __SELF__.meta('thumbnail_alt') }}" {{ __SELF__.lazy ? "data-" : "" }}src="{{ __SELF__.thumbnail }}">
+            </div>
+            <div class="video-container">
+                <video controls preload="auto" autoplay data-src="{{ __SELF__.url }}" width="100%" style="display: none"></video>
+            </div>
+        </div>
+    </div>
+{% endif %}

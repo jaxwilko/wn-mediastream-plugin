@@ -1,0 +1,40 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    path:
+        label: Media File
+        type: mediafinder
+        mode: file
+
+tabs:
+    fields:
+        data[name]:
+            label: Name
+            type: text
+            span: left
+            tab: Meta Data
+        data[uploaded_date]:
+            label: Uploaded Date
+            type: datepicker
+            mode: date
+            span: right
+            tab: Meta Data
+        data[description]:
+            label: Uploaded Date
+            type: textarea
+            tab: Meta Data
+        data[thumbnail]:
+            label: Thumbnail
+            type: mediafinder
+            mode: image
+            span: left
+            tab: Meta Data
+        data[thumbnail_alt]:
+            label: Thumbnail Alt
+            type: text
+            span: right
+            tab: Meta Data
+
+

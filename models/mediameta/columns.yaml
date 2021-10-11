@@ -1,0 +1,13 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: "ID"
+        invisible: true
+
+    path:
+        label: "Path"
+        searchable: true

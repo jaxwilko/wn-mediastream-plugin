@@ -1,0 +1,38 @@
+.media-container {
+    height: 100%;
+    width: 100%;
+}
+.thumbnail-container {
+    position: relative;
+}
+.media-container img.thumbnail {
+    width: 100%;
+    height: 100%;
+}
+.video-overlay {
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    display : flex;
+    align-items : center;
+    cursor: pointer;
+    background-color: rgba(21, 21, 21, 0.6);
+    transition: background-color .3s ease-in-out;
+}
+.video-overlay svg {
+    width: 17%;
+    margin: auto;
+}
+.video-overlay svg path {
+    transition: opacity .3s ease-in-out, fill .3s ease-in-out;
+}
+.video-overlay:hover {
+    background-color: rgba(21, 21, 21, 0.5);
+}
+.video-overlay:hover svg path:first-child {
+    opacity: 0.8;
+}
+.video-overlay:hover svg path:last-child {
+    fill: rgb(187, 195, 201);
+}

@@ -1,0 +1,14 @@
+{
+    "name": "jaxwilko/wn-mediastream-plugin",
+    "type": "winter-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jack Wilkinson",
+            "email": "me@jackwilky.com"
+        }
+    ],
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^0.18.0"
+    }
+}

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Meta Data
+
+# Model Form Field configuration
+form: $/jaxwilko/mediastream/models/mediameta/fields.yaml
+
+# Model Class name
+modelClass: JaxWilko\MediaStream\Models\MediaMeta
+
+# Default redirect location
+defaultRedirect: jaxwilko/mediastream/metadata
+
+# Create page
+create:
+    title: Create
+    redirect: jaxwilko/mediastream/metadata/update/:id
+    redirectClose: jaxwilko/mediastream/metadata
+
+# Update page
+update:
+    title: Update
+    redirect: jaxwilko/mediastream/metadata
+    redirectClose: jaxwilko/mediastream/metadata
+
+# Preview page
+preview:
+    title: Preview
