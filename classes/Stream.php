@@ -25,6 +25,12 @@ class Stream
             return \App::abort(404);
         }
 
+        $mime = Storage::mimeType($path);
+
+        if ((explode('/', $mime)[0] ?? null) !== 'video') {
+            return \App::abort(404);
+        }
+
         $size = Storage::size($path);
         $start = $streamStart = 0;
         $end = $streamEnd = $size - 1;
@@ -33,15 +39,13 @@ class Stream
         $stream = Storage::readStream($path);
 
         $headers = [
-            'Content-Type'          => Storage::mimeType($path),
+            'Content-Type'          => $mime,
             'Content-Length'        => $size,
             'Content-Disposition'   => 'attachment; filename="' . basename($path) . '"',
             'Last-Modified'         => gmdate('D, d M Y H:i:s', Storage::lastModified($path)) . ' GMT',
             'Expires'               => gmdate('D, d M Y H:i:s', time()+2592000) . ' GMT',
             'Accept-Ranges'         => '0-' . $end
         ];
-
-        \Log::error(Request::server('HTTP_RANGE'));
 
         if (Request::server('HTTP_RANGE')) {
             list($type, $range) = explode('=', Request::server('HTTP_RANGE'), 2);
