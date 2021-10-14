@@ -24,7 +24,7 @@ is_hidden = 0
 ==
 {% styles %}
 <div>
-    {% component 'video' file='videos/example.mp4' %}
+    {% component 'video' file='media/videos/example.mp4' %}
 </div>
 ```
 
