@@ -10,16 +10,9 @@ class Stream
 {
     const BUFFER_SIZE = 102400;
 
-    protected $mediaFormat;
-
-    public function __construct()
-    {
-        $this->mediaFormat = sprintf('/%s/%%s', config('cms.storage.media.folder'));
-    }
-
     public function make(string $video)
     {
-        $path = sprintf($this->mediaFormat, base64_decode($video));
+        $path = base64_decode($video);
 
         if (!Storage::exists($path)) {
             return \App::abort(404);

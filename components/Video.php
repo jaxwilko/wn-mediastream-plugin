@@ -22,8 +22,6 @@ class Video extends ComponentBase
 
     protected $thumbnail;
 
-    protected $mediaFormat;
-
     protected $meta;
 
     public function componentDetails()
@@ -60,14 +58,12 @@ class Video extends ComponentBase
 
     public function onRun()
     {
-        $this->mediaFormat = sprintf('%s/%%s', config('cms.storage.media.folder'));
-
         $this->page->addCss('/plugins/jaxwilko/mediastream/assets/css/video.css');
     }
 
     public function onRender()
     {
-        $file = sprintf($this->mediaFormat, $this->property('file'));
+        $file = $this->property('file');
 
         if (!$file || !Storage::exists($file)) {
             Log::notice(sprintf('Video file `%s` not found', $file ?? 'undefined'));
